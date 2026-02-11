@@ -10,7 +10,7 @@ namespace runningmann
     {
         public int x = X;
         public int y = Y;
-
+        int leg = 0;
         public void Draw()
         {
             Console.Clear();
@@ -19,7 +19,18 @@ namespace runningmann
             Console.SetCursorPosition(x, y +1);
             Console.Write("/|\\");
             Console.SetCursorPosition(x, y +2);
-            Console.Write("/ \\");
+            string[] legs =
+            {
+                "/\\",   
+                "/ |",   
+                "/|",   
+                "\\\\",  
+                "| \\",  
+                "/ \\"    
+            };
+
+            Console.Write(legs[leg]);
+            leg = (leg + 1) % legs.Length; // Cycle through leg positions to create a running animation effect.
         }
 
         public void HandleInput()
