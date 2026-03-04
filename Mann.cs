@@ -12,13 +12,17 @@ namespace runningmann
     {
         public int x;
         public int y;
+        int score;
         bool jumping = false;
         Designmann design = new Designmann();
+        public int health;
 
         public Mann(int X, int Y)
         {
             x = X;
             y = Y;
+            health = 3;
+            score = 0;
         }
 
         public void Draw()
@@ -47,7 +51,7 @@ namespace runningmann
         void Jump()
         {
             if (jumping) return; // Prevent double jumping.
-            y += -6; 
+            y += -8; 
             jumping = true;
         }
         void fall()

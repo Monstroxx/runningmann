@@ -26,8 +26,15 @@ namespace runningmann
             for (int i = 0; i < Obstacles.Count; i++)
             {
                 Obstacles[i].x += Obstacles[i].x_vec;
+
+                int X = Obstacles[i].x;
+                int Y = Obstacles[i].y;
                 if (Obstacles[i].x < 1)
                 {
+                    Console.SetCursorPosition(X, Y);
+                    Console.Write(" ");
+                    Console.SetCursorPosition(X, Y - 1);
+                    Console.Write(" ");
                     Obstacles.RemoveAt(i);
                     i--;
                 }
@@ -41,8 +48,6 @@ namespace runningmann
                     Console.SetCursorPosition(oldX, oldY - 1);
                     Console.Write(" ");
                     // draw new position
-                    int X = Obstacles[i].x;
-                    int Y = Obstacles[i].y;
                     Console.SetCursorPosition(X, Y);
                     Console.Write(design);
                     Console.SetCursorPosition(X, Y - 1);
@@ -53,8 +58,8 @@ namespace runningmann
 
         static class Global
         {
-            public static int speed = 100; // Speed of the obstacles, lower is faster. 
-            public static int obstaclerate = 10; // Chance of an obstacle spawning each frame, out of 100.
+            public static int speed = 100; // Speed of the obstacles
+            public static int obstaclerate = 5; // Chance of an obstacle spawning each frame, out of 100.
         }
         public bool spawn()
         {
