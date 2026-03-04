@@ -3,34 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Timer = System.Timers.Timer;
+
 
 namespace runningmann
 {
-    public class Mann(int X, int Y)
+    public class Mann
     {
-        public int x = X;
-        public int y = Y;
-        int leg = 0;
+        public int x;
+        public int y;
+        bool jumping = false;
+        Design design = new Design();
+
+        public Mann(int X, int Y)
+        {
+            x = X;
+            y = Y;
+        }
+
         public void Draw()
         {
-            Console.Clear();
-            Console.SetCursorPosition(x, y);
-            Console.Write(" O");
-            Console.SetCursorPosition(x, y +1);
-            Console.Write("/|\\");
-            Console.SetCursorPosition(x, y +2);
-            string[] legs =
-            {
-                "/\\",   
-                "/ |",   
-                "/|",   
-                "\\\\",  
-                "| \\",  
-                "/ \\"    
-            };
-
-            Console.Write(legs[leg]);
-            leg = (leg + 1) % legs.Length; // Cycle through leg positions to create a running animation effect.
+            design.DrawMann(x, y);
+            fall();
         }
 
         public void HandleInput()
@@ -44,6 +38,30 @@ namespace runningmann
             else if (key.Key == ConsoleKey.RightArrow)
             {
                 x = Math.Min(Console.WindowWidth - 3, x + 1); // Console.WindowWidth to ensure x doesn't exceed window width. "-3" because the character is 2 characters wide. 
+            }
+            else if (key.Key == ConsoleKey.Spacebar)
+            {
+                Jump();
+            }
+        }
+        void Jump()
+        {
+            if (jumping) return; // Prevent double jumping.
+            y += -6; 
+            jumping = true;
+        }
+        void fall()
+        {
+            if (jumping)
+            {
+                if (y != Console.WindowHeight - 3)
+                {
+                    y += 1;
+                }
+                else
+                {
+                    jumping = false;
+                }
             }
         }
     }
