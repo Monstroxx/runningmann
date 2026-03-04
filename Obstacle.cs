@@ -11,7 +11,7 @@ namespace runningmann
         public int x { get; set; }
         public int y { get; set; }
 
-        static string design = Design.obstacledesign;
+        static string design = Designobstacle.obstacledesign;
 
         int x_vec;
 

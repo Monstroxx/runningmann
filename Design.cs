@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace runningmann
 {
-    public class Design
+    public class Designmann
     {
         // mann
         int lastX = -1;
@@ -49,8 +49,6 @@ namespace runningmann
             lastY = y;
         }
 
-        public static string obstacledesign = "#";
-
         static void consoledesign()
         {
             string[] topleft = { "╔", "║", "╟" };
@@ -83,5 +81,9 @@ namespace runningmann
                 Console.Write("═");
             Console.WriteLine("╝");
         }
+    }
+    public class Designobstacle
+    {
+        public static string obstacledesign = "#";
     }
 }

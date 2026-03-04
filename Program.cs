@@ -4,7 +4,7 @@ using Timer = System.Timers.Timer;
 Timer timer = new(200);
 
 Mann mann = new(Console.WindowWidth/2, Console.WindowHeight - 3);
-Design design = new Design();
+Designmann design = new Designmann();
 List<Obstacle> obstacles = new();
 Console.CursorVisible = false;
 

@@ -13,7 +13,7 @@ namespace runningmann
         public int x;
         public int y;
         bool jumping = false;
-        Design design = new Design();
+        Designmann design = new Designmann();
 
         public Mann(int X, int Y)
         {
@@ -31,15 +31,15 @@ namespace runningmann
         {
             ConsoleKeyInfo key = Console.ReadKey(true);
 
-            if (key.Key == ConsoleKey.LeftArrow)
+            if (key.Key == ConsoleKey.LeftArrow || key.Key == ConsoleKey.A)
             {
                 x = Math.Max(0, x - 1); // Prevent moving out of bounds. Math.Max to ensure x doesn't go below 0.
             }
-            else if (key.Key == ConsoleKey.RightArrow)
+            else if (key.Key == ConsoleKey.RightArrow || key.Key == ConsoleKey.D)
             {
                 x = Math.Min(Console.WindowWidth - 3, x + 1); // Console.WindowWidth to ensure x doesn't exceed window width. "-3" because the character is 2 characters wide. 
             }
-            else if (key.Key == ConsoleKey.Spacebar)
+            else if (key.Key == ConsoleKey.Spacebar || key.Key == ConsoleKey.UpArrow || key.Key == ConsoleKey.W)
             {
                 Jump();
             }
